@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Leatrise Tiny Lab</title>
+  <desc id="desc">An abstract orbital circuit mark</desc>
+  <defs>
+    <linearGradient id="bg" x1="70" y1="50" x2="442" y2="462" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1b2036"/>
+      <stop offset=".52" stop-color="#5e4ad8"/>
+      <stop offset="1" stop-color="#12a9b8"/>
+    </linearGradient>
+    <linearGradient id="line" x1="128" y1="142" x2="388" y2="374" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#bdfcff"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="150" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="136" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+  <path d="M126 292c42-122 165-183 259-121 74 49 35 158-52 190-81 30-184 2-207-69Z"
+        fill="none" stroke="url(#line)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M186 171v128c0 31 25 56 56 56h92" fill="none" stroke="#fff" stroke-width="18"
+        stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <circle cx="186" cy="168" r="18" fill="#fff"/>
+  <circle cx="335" cy="355" r="18" fill="#bdfcff"/>
+  <circle cx="360" cy="169" r="11" fill="#ff8bd4"/>
+</svg>
