@@ -1,0 +1,347 @@
+/*
+ * Personal layer for Leatrise's tiny lab.
+ * Loaded after the original theme styles so the upstream layout stays easy to update.
+ */
+
+:root {
+    color-scheme: light;
+}
+
+html {
+    --main_bg_color:
+        radial-gradient(circle at 12% 12%, rgba(124, 108, 255, 0.22), transparent 32%),
+        radial-gradient(circle at 84% 18%, rgba(45, 204, 211, 0.18), transparent 28%),
+        linear-gradient(145deg, #eef2ff 0%, #f8fbff 46%, #f4f0ff 100%);
+    --main_text_color: #172033;
+    --gradient: linear-gradient(120deg, #6f5cff, #b348d4 45%, #00a6b8 82%);
+    --purple_text_color: #6554e8;
+    --text_bg_color: rgba(111, 92, 255, 0.12);
+    --item_bg_color: rgba(255, 255, 255, 0.62);
+    --item_hover_color: rgba(255, 255, 255, 0.88);
+    --item_left_title_color: #172033;
+    --item_left_text_color: #556076;
+    --footer_text_color: #687187;
+    --left_tag_item: rgba(255, 255, 255, 0.58);
+    --card_filter: 16px;
+    --back_filter: 0px;
+    --back_filter_color: transparent;
+    --fill: #172033;
+}
+
+html[data-theme="Dark"] {
+    color-scheme: dark;
+    --main_bg_color:
+        radial-gradient(circle at 14% 10%, rgba(114, 82, 255, 0.22), transparent 32%),
+        radial-gradient(circle at 85% 20%, rgba(0, 176, 190, 0.14), transparent 28%),
+        linear-gradient(145deg, #090b12 0%, #111522 50%, #0d0f18 100%);
+    --main_text_color: #f4f5fb;
+    --gradient: linear-gradient(120deg, #9b8cff, #ff7ac8 45%, #72f2e5 82%);
+    --purple_text_color: #a99cff;
+    --text_bg_color: rgba(133, 108, 255, 0.18);
+    --item_bg_color: rgba(22, 25, 37, 0.72);
+    --item_hover_color: rgba(31, 36, 53, 0.94);
+    --item_left_title_color: #f4f5fb;
+    --item_left_text_color: #aab2c5;
+    --footer_text_color: #8e96aa;
+    --left_tag_item: rgba(38, 43, 61, 0.74);
+    --back_filter_color: rgba(0, 0, 0, 0.08);
+    --fill: #f4f5fb;
+}
+
+body {
+    background: var(--main_bg_color);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    background-image:
+        linear-gradient(rgba(120, 130, 180, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 130, 180, 0.07) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+    z-index: -2;
+}
+
+#zyyo-loading {
+    background: var(--main_bg_color);
+}
+
+#zyyo-loading-center {
+    width: 92px;
+    height: 92px;
+    background: transparent;
+    border: 2px solid rgba(124, 108, 255, 0.18);
+    border-top-color: #7c6cff;
+    animation: labSpin 0.9s linear infinite;
+}
+
+@keyframes labSpin {
+    to { transform: rotate(360deg); }
+}
+
+.zyyo-main {
+    max-width: 1180px;
+}
+
+.zyyo-left {
+    width: 250px;
+    padding: 0 16px;
+}
+
+.zyyo-right {
+    width: calc(100% - 250px);
+    padding: 26px 24px 72px;
+}
+
+.lab-logo {
+    background-image: url("../svg/logo.svg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 60px rgba(80, 66, 180, 0.2);
+}
+
+.logo {
+    width: 84%;
+}
+
+.index-logo {
+    width: 34%;
+    max-width: 170px;
+}
+
+.left-div,
+.projectItem,
+.iconItem,
+.switch {
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow: 0 12px 32px rgba(42, 48, 78, 0.08);
+}
+
+html[data-theme="Dark"] .left-div,
+html[data-theme="Dark"] .projectItem,
+html[data-theme="Dark"] .iconItem,
+html[data-theme="Dark"] .switch {
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 12px 38px rgba(0, 0, 0, 0.2);
+}
+
+.mini-icon {
+    display: inline-flex;
+    width: 20px;
+    margin-right: 8px;
+    justify-content: center;
+    color: var(--purple_text_color);
+    font-weight: 800;
+}
+
+.left-tag-item {
+    border: 1px solid rgba(124, 108, 255, 0.08);
+}
+
+#line {
+    height: 230px;
+}
+
+#line li > div:last-child {
+    margin-top: 3px;
+    color: var(--item_left_text_color);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+.eyebrow {
+    margin-top: 46px;
+    color: var(--item_left_text_color);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+}
+
+.welcome {
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+.description {
+    max-width: 760px;
+    line-height: 1.6;
+}
+
+.iconItem:first-child {
+    margin-left: 0;
+}
+
+.iconGlyph {
+    display: inline-flex;
+    min-width: 22px;
+    height: 22px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+    color: var(--main_text_color);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.iconItem:hover {
+    width: 112px;
+}
+
+.section-icon {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: var(--text_bg_color);
+    color: var(--purple_text_color);
+    font-size: 17px;
+}
+
+.page-content section {
+    scroll-margin-top: 22px;
+}
+
+.projectList {
+    margin: -7px;
+}
+
+.projectItem {
+    min-height: 108px;
+    height: auto;
+    overflow: hidden;
+}
+
+.projectItemLeft p {
+    margin-top: 10px;
+    line-height: 1.35;
+}
+
+.projectItemRight {
+    min-width: 20%;
+}
+
+.projectGlyph {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: var(--text_bg_color);
+    color: var(--purple_text_color);
+    font-size: 20px;
+    font-weight: 900;
+    transition: transform 0.35s ease;
+}
+
+.projectItem:hover .projectGlyph {
+    transform: rotate(8deg) scale(1.08);
+}
+
+.skillCloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 4px 0 18px;
+}
+
+.skillCloud span {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 0 16px;
+    border: 1px solid rgba(124, 108, 255, 0.12);
+    border-radius: 14px;
+    background: var(--item_bg_color);
+    backdrop-filter: blur(var(--card_filter));
+    -webkit-backdrop-filter: blur(var(--card_filter));
+    color: var(--item_left_title_color);
+    font-size: 14px;
+    box-shadow: 0 10px 28px rgba(42, 48, 78, 0.06);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.skillCloud span:hover {
+    transform: translateY(-2px);
+    background: var(--item_hover_color);
+}
+
+footer {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+footer a:hover {
+    color: var(--purple_text_color);
+}
+
+@media (max-width: 800px) {
+    .zyyo-right {
+        padding: 20px 18px 74px;
+    }
+
+    .eyebrow {
+        margin-top: 26px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .projectList {
+        margin: -6px;
+    }
+
+    .a,
+    .b {
+        margin: 6px;
+        width: calc(100% - 12px);
+    }
+
+    .a {
+        min-height: 96px;
+    }
+
+    .a .projectItemRight {
+        display: flex;
+    }
+
+    .projectItemLeft p {
+        font-size: 12px;
+    }
+
+    .skill {
+        padding: 4px 0 18px;
+    }
+
+    .skillCloud {
+        gap: 9px;
+    }
+
+    .skillCloud span {
+        min-height: 38px;
+        padding: 0 13px;
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
