@@ -351,12 +351,20 @@ html[data-theme="Dark"] .switch {
 footer {
     display: flex;
     gap: 8px;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 footer a:hover {
     color: var(--purple_text_color);
+}
+
+footer .lh {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    line-height: inherit;
 }
 
 @media (max-width: 800px) {
