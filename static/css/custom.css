@@ -367,6 +367,19 @@ footer .lh {
     line-height: inherit;
 }
 
+footer .gongan-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+footer .gongan-icon {
+    width: 18px;
+    height: 19px;
+    object-fit: contain;
+    flex: none;
+}
+
 @media (max-width: 800px) {
     .zyyo-right {
         padding: 20px 18px 74px;
