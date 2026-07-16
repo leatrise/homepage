@@ -78,17 +78,41 @@ function renderContributionHeatmap(data) {
 }
 
 function loadContributionHeatmap() {
-    fetch("./static/data/contributions.json", { cache: "no-cache" })
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Contribution data request failed");
-            }
-            return response.json();
-        })
-        .then(renderContributionHeatmap)
-        .catch(function () {
+    var dataUrls = [
+        "./static/data/contributions.json",
+        "https://raw.githubusercontent.com/leatrise/homepage/main/static/data/contributions.json"
+    ];
+    var renderedTimestamp = -1;
+    var rendered = false;
+
+    function requestData(url) {
+        return fetch(url, { cache: "no-store" })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Contribution data request failed: " + response.status);
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                if (!Array.isArray(data.weeks) || data.weeks.length === 0) {
+                    throw new Error("Contribution data is empty");
+                }
+
+                var timestamp = Date.parse(data.generatedAt || "") || 0;
+                if (!rendered || timestamp > renderedTimestamp) {
+                    renderContributionHeatmap(data);
+                    rendered = true;
+                    renderedTimestamp = timestamp;
+                }
+            });
+    }
+
+    Promise.allSettled(dataUrls.map(requestData)).then(function (results) {
+        if (!rendered) {
+            console.error("Unable to load GitHub contribution data", results);
             document.getElementById("contributionStatus").textContent = "GitHub activity is temporarily unavailable.";
-        });
+        }
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
